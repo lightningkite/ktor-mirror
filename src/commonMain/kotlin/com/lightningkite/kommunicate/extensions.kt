@@ -8,7 +8,7 @@ import com.lightningkite.mirror.serialization.json.JsonSerializer
 fun <T> HttpBody.Companion.serialize(
     value: T,
     type: Type<T>,
-    serializer: StringSerializer = JsonSerializer
+    serializer: StringSerializer
 ) = HttpBody.string(serializer.contentType, serializer.write(value, type))
 
 fun <T> HttpBody.Companion.serialize(
@@ -24,7 +24,7 @@ suspend fun <T> HttpClient.callSerializer(
     body: HttpBody = HttpBody.EMPTY,
     headers: Map<String, List<String>> = mapOf(),
     type: Type<T>,
-    serializer: StringSerializer = JsonSerializer
+    serializer: StringSerializer
 ): T = callSerializerDetail(url, method, body, headers, type, serializer).let {
     if (it.failure != null) throw it.failure!!
     else it.result!!
@@ -36,7 +36,7 @@ suspend fun <T> HttpClient.callSerializerDetail(
     body: HttpBody = HttpBody.EMPTY,
     headers: Map<String, List<String>> = mapOf(),
     type: Type<T>,
-    serializer: StringSerializer = JsonSerializer
+    serializer: StringSerializer
 ) = callStringDetail(
     url,
     method,

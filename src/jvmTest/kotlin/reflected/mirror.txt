@@ -1,4 +1,4 @@
 reflected
-configureMirror
+TestRegistry
 
 com.lightningkite.kommunicate.Post
