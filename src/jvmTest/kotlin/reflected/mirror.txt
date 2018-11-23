@@ -1,4 +1,3 @@
-reflected
-TestRegistry
+name = reflected.TestRegistry
 
 com.lightningkite.kommunicate.Post
