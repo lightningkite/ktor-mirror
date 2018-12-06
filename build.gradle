@@ -42,6 +42,10 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven { url "https://kotlin.bintray.com/kotlinx" }
+        if(org.gradle.internal.os.OperatingSystem.current().isMacOsX()){
+            fromPreset(presets.iosX64, 'iosx64')
+            fromPreset(presets.iosArm64, 'ios')
+        }
 }
 group 'com.lightningkite'
 version '0.0.2'
@@ -99,6 +103,25 @@ kotlin {
                 api 'org.jetbrains.kotlin:kotlin-test-js'
             }
         }
+
+        iosMain {
+            dependencies {
+            }
+        }
+        iosTest {
+            dependencies {
+            }
+        }
+        iosx64Main {
+            dependencies {
+                dependsOn iosMain
+            }
+        }
+        iosx64Test {
+            dependencies {
+                dependsOn iosTest
+            }
+        }
     }
 }
 tasks.withType(compileKotlinJs.getClass()) {
@@ -108,3 +131,18 @@ tasks.withType(compileKotlinJs.getClass()) {
         metaInfo = true
     }
 }
+
+task iosTest {
+    def device = project.findProperty("iosDevice")?.toString() ?: "iPhone 8"
+    dependsOn 'linkTestDebugExecutableIosx64'
+    group = JavaBasePlugin.VERIFICATION_GROUP
+    description = "Runs tests for target 'ios' on an iOS simulator"
+
+    doLast {
+        def binary = kotlin.targets.iosx64.compilations.test.getBinary('EXECUTABLE', 'DEBUG')
+        exec {
+            commandLine 'xcrun', 'simctl', 'spawn', device, binary.absolutePath
+        }
+    }
+}
+tasks.check.dependsOn(tasks.iosTest)
