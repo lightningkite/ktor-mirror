@@ -104,30 +104,32 @@ kotlin {
             }
         }
 
-        iosMain {
-            dependencies {
-                api 'org.jetbrains.kotlinx:kotlinx-coroutines-core-native_debug_ios_arm64:1.0.1'
-                api 'org.jetbrains.kotlinx:kotlinx-io-native_debug_ios_arm64:0.1.1'
-                api 'com.lightningkite:kommunicate-ios:0.0.2'
-                api 'com.lightningkite:mirror-runtime-ios:0.0.2'
+        if (org.gradle.internal.os.OperatingSystem.current().isMacOsX()) {
+            iosMain {
+                dependencies {
+                    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core-native_debug_ios_arm64:1.0.1'
+                    api 'org.jetbrains.kotlinx:kotlinx-io-native_debug_ios_arm64:0.1.1'
+                    api 'com.lightningkite:kommunicate-ios:0.0.2'
+                    api 'com.lightningkite:mirror-runtime-ios:0.0.2'
+                }
             }
-        }
-        iosTest {
-            dependencies {
+            iosTest {
+                dependencies {
+                }
             }
-        }
-        iosx64Main {
-            kotlin.srcDir('src/iosMain/kotlin')
-            dependencies {
-                api 'org.jetbrains.kotlinx:kotlinx-coroutines-core-native_debug_ios_x64:1.0.1'
-                api 'org.jetbrains.kotlinx:kotlinx-io-native_debug_ios_x64:0.1.1'
-                api 'com.lightningkite:kommunicate-iosx64:0.0.2'
-                api 'com.lightningkite:mirror-runtime-iosx64:0.0.2'
+            iosx64Main {
+                kotlin.srcDir('src/iosMain/kotlin')
+                dependencies {
+                    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core-native_debug_ios_x64:1.0.1'
+                    api 'org.jetbrains.kotlinx:kotlinx-io-native_debug_ios_x64:0.1.1'
+                    api 'com.lightningkite:kommunicate-iosx64:0.0.2'
+                    api 'com.lightningkite:mirror-runtime-iosx64:0.0.2'
+                }
             }
-        }
-        iosx64Test {
-            kotlin.srcDir('src/iosTest/kotlin')
-            dependencies {
+            iosx64Test {
+                kotlin.srcDir('src/iosTest/kotlin')
+                dependencies {
+                }
             }
         }
     }
