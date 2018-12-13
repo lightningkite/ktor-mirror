@@ -42,10 +42,6 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven { url "https://kotlin.bintray.com/kotlinx" }
-//        if(org.gradle.internal.os.OperatingSystem.current().isMacOsX()){
-//            fromPreset(presets.iosX64, 'iosx64')
-//            fromPreset(presets.iosArm64, 'ios')
-//        }
 }
 group 'com.lightningkite'
 version '0.0.2'
@@ -55,6 +51,10 @@ kotlin {
     targets {
         fromPreset(presets.jvm, 'jvm')
         fromPreset(presets.js, 'js')
+        if(org.gradle.internal.os.OperatingSystem.current().isMacOsX()){
+            fromPreset(presets.iosX64, 'iosx64')
+            fromPreset(presets.iosArm64, 'ios')
+        }
     }
     sourceSets {
         commonMain {
@@ -106,6 +106,10 @@ kotlin {
 
         iosMain {
             dependencies {
+                api 'org.jetbrains.kotlinx:kotlinx-coroutines-core-native_debug_ios_arm64:1.0.1'
+                api "org.jetbrains.kotlinx:kotlinx-io-native_debug_ios_arm64:0.1.1"
+                api 'com.lightningkite:kommunicate-ios:0.0.2'
+                api 'com.lightningkite:mirror-runtime-ios:0.0.2'
             }
         }
         iosTest {
@@ -113,13 +117,17 @@ kotlin {
             }
         }
         iosx64Main {
+            kotlin.srcDir('src/iosMain/kotlin')
             dependencies {
-                dependsOn iosMain
+                api 'org.jetbrains.kotlinx:kotlinx-coroutines-core-native_debug_ios_x64:1.0.1'
+                api "org.jetbrains.kotlinx:kotlinx-io-native_debug_ios_x64:0.1.1"
+                api 'com.lightningkite:kommunicate-iosx64:0.0.2'
+                api 'com.lightningkite:mirror-runtime-iosx64:0.0.2'
             }
         }
         iosx64Test {
+            kotlin.srcDir('src/iosTest/kotlin')
             dependencies {
-                dependsOn iosTest
             }
         }
     }
@@ -132,17 +140,19 @@ tasks.withType(compileKotlinJs.getClass()) {
     }
 }
 
-//task iosTest {
-//    def device = project.findProperty("iosDevice")?.toString() ?: "iPhone 8"
-//    dependsOn 'linkTestDebugExecutableIosx64'
-//    group = JavaBasePlugin.VERIFICATION_GROUP
-//    description = "Runs tests for target 'ios' on an iOS simulator"
-//
-//    doLast {
-//        def binary = kotlin.targets.iosx64.compilations.test.getBinary('EXECUTABLE', 'DEBUG')
-//        exec {
-//            commandLine 'xcrun', 'simctl', 'spawn', device, binary.absolutePath
-//        }
-//    }
-//}
-//tasks.check.dependsOn(tasks.iosTest)
+if(org.gradle.internal.os.OperatingSystem.current().isMacOsX()) {
+    task iosTest {
+        def device = project.findProperty("iosDevice")?.toString() ?: "iPhone 8"
+        dependsOn 'linkTestDebugExecutableIosx64'
+        group = JavaBasePlugin.VERIFICATION_GROUP
+        description = "Runs tests for target 'ios' on an iOS simulator"
+
+        doLast {
+            def binary = kotlin.targets.iosx64.compilations.test.getBinary('EXECUTABLE', 'DEBUG')
+            exec {
+                commandLine 'xcrun', 'simctl', 'spawn', device, binary.absolutePath
+            }
+        }
+    }
+    tasks.check.dependsOn(tasks.iosTest)
+}
