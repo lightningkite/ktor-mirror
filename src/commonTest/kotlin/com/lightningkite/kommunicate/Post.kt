@@ -1,6 +1,5 @@
 package com.lightningkite.kommunicate
 
-
 data class Post(
     var id: Long? = null,
     var userId: Long = 0,
