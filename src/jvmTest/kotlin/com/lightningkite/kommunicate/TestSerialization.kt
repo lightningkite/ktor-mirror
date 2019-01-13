@@ -1,5 +1,7 @@
 package com.lightningkite.kommunicate
 
+import com.lightningkite.kommunicate.mirror.callSerializer
+import com.lightningkite.kommunicate.mirror.serialize
 import com.lightningkite.mirror.info.list
 import com.lightningkite.mirror.info.type
 import com.lightningkite.mirror.serialization.DefaultRegistry

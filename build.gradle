@@ -50,12 +50,16 @@ version '0.0.2'
 kotlin {
     targets {
         fromPreset(presets.jvm, 'jvm')
+        fromPreset(presets.jvm, 'server')
         fromPreset(presets.js, 'js')
         if(org.gradle.internal.os.OperatingSystem.current().isMacOsX()){
             fromPreset(presets.iosX64, 'iosx64')
             fromPreset(presets.iosArm64, 'ios')
         }
     }
+
+    def ktorVersion = '1.0.0'
+
     sourceSets {
         commonMain {
             dependencies {
@@ -85,6 +89,35 @@ kotlin {
                 api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
                 api 'org.jetbrains.kotlin:kotlin-test'
                 api 'org.jetbrains.kotlin:kotlin-test-junit'
+            }
+        }
+        serverMain {
+            dependencies {
+                api 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+                api 'com.squareup.okhttp3:okhttp:3.11.0'
+                api 'com.lightningkite:kommunicate-jvm:0.0.2'
+                api 'com.lightningkite:mirror-runtime-jvm:0.0.2'
+
+                api "io.ktor:ktor-server-core:${ktorVersion}"
+                api "io.ktor:ktor-auth:${ktorVersion}"
+                api "io.ktor:ktor-websockets:${ktorVersion}"
+                api "me.gosimple:nbvcxz:1.4.2"
+
+                api 'com.lightningkite:mirror-archive-api-jvm:0.0.2'
+
+                api 'de.mkammerer:argon2-jvm:2.5'
+            }
+        }
+        serverTest {
+            dependencies {
+                api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
+                api 'org.jetbrains.kotlin:kotlin-test'
+                api 'org.jetbrains.kotlin:kotlin-test-junit'
+
+                api "io.ktor:ktor-server-test-host:${ktorVersion}"
+                api "io.ktor:ktor-server-netty:${ktorVersion}"
+                api "io.ktor:ktor-server-cio:${ktorVersion}"
+                api "io.ktor:ktor-auth-jwt:${ktorVersion}"
             }
         }
         jsMain {
