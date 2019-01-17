@@ -3,7 +3,7 @@
 package com.lightningkite.mirror.server
 
 import com.lightningkite.kommon.exception.ExceptionNames
-import com.lightningkite.lokalize.TimeStamp
+import com.lightningkite.lokalize.time.TimeStamp
 import com.lightningkite.mirror.archive.server.security.HasPassword
 import com.lightningkite.mirror.info.Indexed
 import com.lightningkite.mirror.info.ThrowsTypes
@@ -16,33 +16,33 @@ import kotlin.reflect.KClass
 @Suppress("RemoveExplicitTypeArguments", "UNCHECKED_CAST", "USELESS_CAST")
 object UserResetPasswordClassInfo: ClassInfo<User.ResetPassword> {
 
-   override val kClass: KClass<User.ResetPassword> = User.ResetPassword::class
-   override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Data)
-   override val companion: Any? get() = null
+    override val kClass: KClass<User.ResetPassword> = User.ResetPassword::class
+    override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Data)
+    override val companion: Any? get() = null
 
-   override val implements: List<Type<*>> = listOf(Type<Request<Unit>>(Request::class, listOf(TypeProjection(Type<Unit>(Unit::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
+    override val implements: List<Type<*>> = listOf(Type<Request<Unit>>(Request::class, listOf(TypeProjection(Type<Unit>(Unit::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
 
-   override val packageName: String = "com.lightningkite.mirror.server"
-   override val owner: KClass<*>? = User::class
-   override val ownerName: String? = "User"
+    override val packageName: String = "com.lightningkite.mirror.server"
+    override val owner: KClass<*>? = User::class
+    override val ownerName: String? = "User"
 
-   override val name: String = "ResetPassword"
-   override val annotations: List<AnnotationInfo> = listOf(AnnotationInfo("@ThrowsTypes", listOf(ExceptionNames.ForbiddenException, ExceptionNames.NoSuchElementException)))
-   override val enumValues: List<User.ResetPassword>? = null
+    override val name: String = "ResetPassword"
+    override val annotations: List<AnnotationInfo> = listOf(AnnotationInfo("@ThrowsTypes", listOf(ExceptionNames.ForbiddenException, ExceptionNames.NoSuchElementException)))
+    override val enumValues: List<User.ResetPassword>? = null
 
-   val fieldEmail = FieldInfo<User.ResetPassword, String>(this, "email", Type<String>(String::class, listOf(), false), false, { it.email as String}, listOf())
+    val fieldEmail = FieldInfo<User.ResetPassword, String>(this, "email", Type<String>(String::class, listOf(), false), false, { it.email as String}, listOf())
 
-   override val fields:List<FieldInfo<User.ResetPassword, *>> = listOf(fieldEmail)
+    override val fields:List<FieldInfo<User.ResetPassword, *>> = listOf(fieldEmail)
 
-   override fun construct(map: Map<String, Any?>): User.ResetPassword {
-       //Gather variables
-       val email:String = map["email"] as String
-           //Handle the optionals
-       
-       //Finally do the call
-       return User.ResetPassword(
-           email = email
-       )
-   }
+    override fun construct(map: Map<String, Any?>): User.ResetPassword {
+        //Gather variables
+        val email:String = map["email"] as String
+        //Handle the optionals
+        
+        //Finally do the call
+        return User.ResetPassword(
+            email = email
+        )
+    }
 
 }

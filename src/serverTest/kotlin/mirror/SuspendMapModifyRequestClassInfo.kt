@@ -8,24 +8,24 @@ import kotlin.reflect.KClass
 @Suppress("RemoveExplicitTypeArguments", "UNCHECKED_CAST", "USELESS_CAST")
 object SuspendMapModifyRequestClassInfo: ClassInfo<SuspendMapModifyRequest<*,*>> {
 
-   override val kClass: KClass<SuspendMapModifyRequest<*,*>> = SuspendMapModifyRequest::class
-   override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Interface, ClassInfo.Modifier.Abstract)
-   override val companion: Any? get() = null
+    override val kClass: KClass<SuspendMapModifyRequest<*,*>> = SuspendMapModifyRequest::class
+    override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Interface, ClassInfo.Modifier.Abstract)
+    override val companion: Any? get() = null
 
-   override val implements: List<Type<*>> = listOf(Type<com.lightningkite.mirror.request.Request<kotlin.Any>>(com.lightningkite.mirror.request.Request::class, listOf(TypeProjection(Type<kotlin.Any>(kotlin.Any::class, listOf(), true), TypeProjection.Variance.INVARIANT)), false), Type<com.lightningkite.mirror.archive.database.SuspendMapServerFunction<Any?, kotlin.Any>>(com.lightningkite.mirror.archive.database.SuspendMapServerFunction::class, listOf(TypeProjection(Type<Any?>(Any::class, listOf(), false), TypeProjection.Variance.INVARIANT), TypeProjection(Type<kotlin.Any>(kotlin.Any::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
+    override val implements: List<Type<*>> = listOf(Type<com.lightningkite.mirror.request.Request<kotlin.Any>>(com.lightningkite.mirror.request.Request::class, listOf(TypeProjection(Type<kotlin.Any>(kotlin.Any::class, listOf(), true), TypeProjection.Variance.INVARIANT)), false), Type<com.lightningkite.mirror.archive.database.SuspendMapServerFunction<Any?, kotlin.Any>>(com.lightningkite.mirror.archive.database.SuspendMapServerFunction::class, listOf(TypeProjection(Type<Any?>(Any::class, listOf(), false), TypeProjection.Variance.INVARIANT), TypeProjection(Type<kotlin.Any>(kotlin.Any::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
 
-   override val packageName: String = "com.lightningkite.mirror.archive.database"
-   override val owner: KClass<*>? = null
-   override val ownerName: String? = null
+    override val packageName: String = "com.lightningkite.mirror.archive.database"
+    override val owner: KClass<*>? = null
+    override val ownerName: String? = null
 
-   override val name: String = "SuspendMapModifyRequest"
-   override val annotations: List<AnnotationInfo> = listOf()
-   override val enumValues: List<SuspendMapModifyRequest<*,*>>? = null
+    override val name: String = "SuspendMapModifyRequest"
+    override val annotations: List<AnnotationInfo> = listOf()
+    override val enumValues: List<SuspendMapModifyRequest<*,*>>? = null
 
-   
+    
 
-   override val fields:List<FieldInfo<SuspendMapModifyRequest<*,*>, *>> = listOf()
+    override val fields:List<FieldInfo<SuspendMapModifyRequest<*,*>, *>> = listOf()
 
-   override fun construct(map: Map<String, Any?>): SuspendMapModifyRequest<Any?, kotlin.Any> = throw NotImplementedError()
+    override fun construct(map: Map<String, Any?>): SuspendMapModifyRequest<Any?, kotlin.Any> = throw NotImplementedError()
 
 }

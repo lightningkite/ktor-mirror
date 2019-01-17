@@ -3,7 +3,7 @@
 package com.lightningkite.mirror.server
 
 import com.lightningkite.kommon.exception.ExceptionNames
-import com.lightningkite.lokalize.TimeStamp
+import com.lightningkite.lokalize.time.TimeStamp
 import com.lightningkite.mirror.archive.server.security.HasPassword
 import com.lightningkite.mirror.info.Indexed
 import com.lightningkite.mirror.info.ThrowsTypes
@@ -16,39 +16,39 @@ import kotlin.reflect.KClass
 @Suppress("RemoveExplicitTypeArguments", "UNCHECKED_CAST", "USELESS_CAST")
 object UserModifyClassInfo: ClassInfo<User.Modify> {
 
-   override val kClass: KClass<User.Modify> = User.Modify::class
-   override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Data)
-   override val companion: Any? get() = null
+    override val kClass: KClass<User.Modify> = User.Modify::class
+    override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Data)
+    override val companion: Any? get() = null
 
-   override val implements: List<Type<*>> = listOf(Type<SuspendMapModifyRequest<Id, User>>(SuspendMapModifyRequest::class, listOf(TypeProjection(Type<Id>(Id::class, listOf(), false), TypeProjection.Variance.INVARIANT), TypeProjection(Type<User>(User::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
+    override val implements: List<Type<*>> = listOf(Type<SuspendMapModifyRequest<Id, User>>(SuspendMapModifyRequest::class, listOf(TypeProjection(Type<Id>(Id::class, listOf(), false), TypeProjection.Variance.INVARIANT), TypeProjection(Type<User>(User::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
 
-   override val packageName: String = "com.lightningkite.mirror.server"
-   override val owner: KClass<*>? = User::class
-   override val ownerName: String? = "User"
+    override val packageName: String = "com.lightningkite.mirror.server"
+    override val owner: KClass<*>? = User::class
+    override val ownerName: String? = "User"
 
-   override val name: String = "Modify"
-   override val annotations: List<AnnotationInfo> = listOf(AnnotationInfo("@ThrowsTypes", listOf(ExceptionNames.ForbiddenException)))
-   override val enumValues: List<User.Modify>? = null
+    override val name: String = "Modify"
+    override val annotations: List<AnnotationInfo> = listOf(AnnotationInfo("@ThrowsTypes", listOf(ExceptionNames.ForbiddenException)))
+    override val enumValues: List<User.Modify>? = null
 
-   val fieldKey = FieldInfo<User.Modify, Id>(this, "key", Type<Id>(Id::class, listOf(), false), false, { it.key as Id}, listOf())
+    val fieldKey = FieldInfo<User.Modify, Id>(this, "key", Type<Id>(Id::class, listOf(), false), false, { it.key as Id}, listOf())
     val fieldOperation = FieldInfo<User.Modify, Operation<User>>(this, "operation", Type<Operation<User>>(Operation::class, listOf(TypeProjection(Type<User>(User::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false), false, { it.operation as Operation<User>}, listOf())
     val fieldCondition = FieldInfo<User.Modify, Condition<User>>(this, "condition", Type<Condition<User>>(Condition::class, listOf(TypeProjection(Type<User>(User::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false), false, { it.condition as Condition<User>}, listOf())
 
-   override val fields:List<FieldInfo<User.Modify, *>> = listOf(fieldKey, fieldOperation, fieldCondition)
+    override val fields:List<FieldInfo<User.Modify, *>> = listOf(fieldKey, fieldOperation, fieldCondition)
 
-   override fun construct(map: Map<String, Any?>): User.Modify {
-       //Gather variables
-       val key:Id = map["key"] as Id
+    override fun construct(map: Map<String, Any?>): User.Modify {
+        //Gather variables
+        val key:Id = map["key"] as Id
         val operation:Operation<User> = map["operation"] as Operation<User>
         val condition:Condition<User> = map["condition"] as Condition<User>
-           //Handle the optionals
-       
-       //Finally do the call
-       return User.Modify(
-           key = key,
+        //Handle the optionals
+        
+        //Finally do the call
+        return User.Modify(
+            key = key,
             operation = operation,
             condition = condition
-       )
-   }
+        )
+    }
 
 }

@@ -10,33 +10,33 @@ import kotlin.reflect.KClass
 @Suppress("RemoveExplicitTypeArguments", "UNCHECKED_CAST", "USELESS_CAST")
 object ThrowExceptionRequestClassInfo: ClassInfo<ThrowExceptionRequest> {
 
-   override val kClass: KClass<ThrowExceptionRequest> = ThrowExceptionRequest::class
-   override val modifiers: List<ClassInfo.Modifier> = listOf()
-   override val companion: Any? get() = null
+    override val kClass: KClass<ThrowExceptionRequest> = ThrowExceptionRequest::class
+    override val modifiers: List<ClassInfo.Modifier> = listOf()
+    override val companion: Any? get() = null
 
-   override val implements: List<Type<*>> = listOf(Type<Request<Unit>>(Request::class, listOf(TypeProjection(Type<Unit>(Unit::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
+    override val implements: List<Type<*>> = listOf(Type<Request<Unit>>(Request::class, listOf(TypeProjection(Type<Unit>(Unit::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
 
-   override val packageName: String = "com.lightningkite.mirror.server"
-   override val owner: KClass<*>? = null
-   override val ownerName: String? = null
+    override val packageName: String = "com.lightningkite.mirror.server"
+    override val owner: KClass<*>? = null
+    override val ownerName: String? = null
 
-   override val name: String = "ThrowExceptionRequest"
-   override val annotations: List<AnnotationInfo> = listOf(AnnotationInfo("@ThrowsTypes", listOf("ForbiddenException")))
-   override val enumValues: List<ThrowExceptionRequest>? = null
+    override val name: String = "ThrowExceptionRequest"
+    override val annotations: List<AnnotationInfo> = listOf(AnnotationInfo("@ThrowsTypes", listOf("ForbiddenException")))
+    override val enumValues: List<ThrowExceptionRequest>? = null
 
-   
+    
 
-   override val fields:List<FieldInfo<ThrowExceptionRequest, *>> = listOf()
+    override val fields:List<FieldInfo<ThrowExceptionRequest, *>> = listOf()
 
-   override fun construct(map: Map<String, Any?>): ThrowExceptionRequest {
-       //Gather variables
-       
-           //Handle the optionals
-       
-       //Finally do the call
-       return ThrowExceptionRequest(
-           
-       )
-   }
+    override fun construct(map: Map<String, Any?>): ThrowExceptionRequest {
+        //Gather variables
+        
+        //Handle the optionals
+        
+        //Finally do the call
+        return ThrowExceptionRequest(
+            
+        )
+    }
 
 }

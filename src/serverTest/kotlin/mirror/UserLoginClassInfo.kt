@@ -3,7 +3,7 @@
 package com.lightningkite.mirror.server
 
 import com.lightningkite.kommon.exception.ExceptionNames
-import com.lightningkite.lokalize.TimeStamp
+import com.lightningkite.lokalize.time.TimeStamp
 import com.lightningkite.mirror.archive.server.security.HasPassword
 import com.lightningkite.mirror.info.Indexed
 import com.lightningkite.mirror.info.ThrowsTypes
@@ -16,36 +16,36 @@ import kotlin.reflect.KClass
 @Suppress("RemoveExplicitTypeArguments", "UNCHECKED_CAST", "USELESS_CAST")
 object UserLoginClassInfo: ClassInfo<User.Login> {
 
-   override val kClass: KClass<User.Login> = User.Login::class
-   override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Data)
-   override val companion: Any? get() = null
+    override val kClass: KClass<User.Login> = User.Login::class
+    override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Data)
+    override val companion: Any? get() = null
 
-   override val implements: List<Type<*>> = listOf(Type<Request<User.Session>>(Request::class, listOf(TypeProjection(Type<User.Session>(User.Session::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
+    override val implements: List<Type<*>> = listOf(Type<Request<User.Session>>(Request::class, listOf(TypeProjection(Type<User.Session>(User.Session::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
 
-   override val packageName: String = "com.lightningkite.mirror.server"
-   override val owner: KClass<*>? = User::class
-   override val ownerName: String? = "User"
+    override val packageName: String = "com.lightningkite.mirror.server"
+    override val owner: KClass<*>? = User::class
+    override val ownerName: String? = "User"
 
-   override val name: String = "Login"
-   override val annotations: List<AnnotationInfo> = listOf(AnnotationInfo("@ThrowsTypes", listOf(ExceptionNames.ForbiddenException, ExceptionNames.NoSuchElementException)))
-   override val enumValues: List<User.Login>? = null
+    override val name: String = "Login"
+    override val annotations: List<AnnotationInfo> = listOf(AnnotationInfo("@ThrowsTypes", listOf(ExceptionNames.ForbiddenException, ExceptionNames.NoSuchElementException)))
+    override val enumValues: List<User.Login>? = null
 
-   val fieldEmail = FieldInfo<User.Login, String>(this, "email", Type<String>(String::class, listOf(), false), false, { it.email as String}, listOf())
+    val fieldEmail = FieldInfo<User.Login, String>(this, "email", Type<String>(String::class, listOf(), false), false, { it.email as String}, listOf())
     val fieldPassword = FieldInfo<User.Login, String>(this, "password", Type<String>(String::class, listOf(), false), false, { it.password as String}, listOf())
 
-   override val fields:List<FieldInfo<User.Login, *>> = listOf(fieldEmail, fieldPassword)
+    override val fields:List<FieldInfo<User.Login, *>> = listOf(fieldEmail, fieldPassword)
 
-   override fun construct(map: Map<String, Any?>): User.Login {
-       //Gather variables
-       val email:String = map["email"] as String
+    override fun construct(map: Map<String, Any?>): User.Login {
+        //Gather variables
+        val email:String = map["email"] as String
         val password:String = map["password"] as String
-           //Handle the optionals
-       
-       //Finally do the call
-       return User.Login(
-           email = email,
+        //Handle the optionals
+        
+        //Finally do the call
+        return User.Login(
+            email = email,
             password = password
-       )
-   }
+        )
+    }
 
 }

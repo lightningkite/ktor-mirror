@@ -3,7 +3,7 @@
 package com.lightningkite.mirror.server
 
 import com.lightningkite.kommon.exception.ExceptionNames
-import com.lightningkite.lokalize.TimeStamp
+import com.lightningkite.lokalize.time.TimeStamp
 import com.lightningkite.mirror.archive.server.security.HasPassword
 import com.lightningkite.mirror.info.Indexed
 import com.lightningkite.mirror.info.ThrowsTypes
@@ -16,45 +16,45 @@ import kotlin.reflect.KClass
 @Suppress("RemoveExplicitTypeArguments", "UNCHECKED_CAST", "USELESS_CAST")
 object UserQueryClassInfo: ClassInfo<User.Query> {
 
-   override val kClass: KClass<User.Query> = User.Query::class
-   override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Data)
-   override val companion: Any? get() = null
+    override val kClass: KClass<User.Query> = User.Query::class
+    override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Data)
+    override val companion: Any? get() = null
 
-   override val implements: List<Type<*>> = listOf(Type<SuspendMapQueryRequest<Id, User>>(SuspendMapQueryRequest::class, listOf(TypeProjection(Type<Id>(Id::class, listOf(), false), TypeProjection.Variance.INVARIANT), TypeProjection(Type<User>(User::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
+    override val implements: List<Type<*>> = listOf(Type<SuspendMapQueryRequest<Id, User>>(SuspendMapQueryRequest::class, listOf(TypeProjection(Type<Id>(Id::class, listOf(), false), TypeProjection.Variance.INVARIANT), TypeProjection(Type<User>(User::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
 
-   override val packageName: String = "com.lightningkite.mirror.server"
-   override val owner: KClass<*>? = User::class
-   override val ownerName: String? = "User"
+    override val packageName: String = "com.lightningkite.mirror.server"
+    override val owner: KClass<*>? = User::class
+    override val ownerName: String? = "User"
 
-   override val name: String = "Query"
-   override val annotations: List<AnnotationInfo> = listOf(AnnotationInfo("@ThrowsTypes", listOf(ExceptionNames.ForbiddenException)))
-   override val enumValues: List<User.Query>? = null
+    override val name: String = "Query"
+    override val annotations: List<AnnotationInfo> = listOf(AnnotationInfo("@ThrowsTypes", listOf(ExceptionNames.ForbiddenException)))
+    override val enumValues: List<User.Query>? = null
 
-   val fieldCondition = FieldInfo<User.Query, Condition<User>>(this, "condition", Type<Condition<User>>(Condition::class, listOf(TypeProjection(Type<User>(User::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false), false, { it.condition as Condition<User>}, listOf())
+    val fieldCondition = FieldInfo<User.Query, Condition<User>>(this, "condition", Type<Condition<User>>(Condition::class, listOf(TypeProjection(Type<User>(User::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false), false, { it.condition as Condition<User>}, listOf())
     val fieldKeyCondition = FieldInfo<User.Query, Condition<Id>>(this, "keyCondition", Type<Condition<Id>>(Condition::class, listOf(TypeProjection(Type<Id>(Id::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false), false, { it.keyCondition as Condition<Id>}, listOf())
     val fieldSortedBy = FieldInfo<User.Query, Sort<User>?>(this, "sortedBy", Type<Sort<User>?>(Sort::class, listOf(TypeProjection(Type<User>(User::class, listOf(), false), TypeProjection.Variance.INVARIANT)), true), false, { it.sortedBy as Sort<User>?}, listOf())
     val fieldAfter = FieldInfo<User.Query, SuspendMap.Entry<Id, User>?>(this, "after", Type<SuspendMap.Entry<Id, User>?>(SuspendMap.Entry::class, listOf(TypeProjection(Type<Id>(Id::class, listOf(), false), TypeProjection.Variance.INVARIANT), TypeProjection(Type<User>(User::class, listOf(), false), TypeProjection.Variance.INVARIANT)), true), false, { it.after as SuspendMap.Entry<Id, User>?}, listOf())
     val fieldCount = FieldInfo<User.Query, Int>(this, "count", Type<Int>(Int::class, listOf(), false), false, { it.count as Int}, listOf())
 
-   override val fields:List<FieldInfo<User.Query, *>> = listOf(fieldCondition, fieldKeyCondition, fieldSortedBy, fieldAfter, fieldCount)
+    override val fields:List<FieldInfo<User.Query, *>> = listOf(fieldCondition, fieldKeyCondition, fieldSortedBy, fieldAfter, fieldCount)
 
-   override fun construct(map: Map<String, Any?>): User.Query {
-       //Gather variables
-       val condition:Condition<User> = map["condition"] as Condition<User>
+    override fun construct(map: Map<String, Any?>): User.Query {
+        //Gather variables
+        val condition:Condition<User> = map["condition"] as Condition<User>
         val keyCondition:Condition<Id> = map["keyCondition"] as Condition<Id>
         val sortedBy:Sort<User>? = map["sortedBy"] as Sort<User>?
         val after:SuspendMap.Entry<Id, User>? = map["after"] as SuspendMap.Entry<Id, User>?
         val count:Int = map["count"] as Int
-           //Handle the optionals
-       
-       //Finally do the call
-       return User.Query(
-           condition = condition,
+        //Handle the optionals
+        
+        //Finally do the call
+        return User.Query(
+            condition = condition,
             keyCondition = keyCondition,
             sortedBy = sortedBy,
             after = after,
             count = count
-       )
-   }
+        )
+    }
 
 }

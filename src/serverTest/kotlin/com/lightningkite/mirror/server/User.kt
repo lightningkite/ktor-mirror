@@ -1,7 +1,7 @@
 package com.lightningkite.mirror.server
 
 import com.lightningkite.kommon.exception.ExceptionNames
-import com.lightningkite.lokalize.TimeStamp
+import com.lightningkite.lokalize.time.TimeStamp
 import com.lightningkite.mirror.archive.database.*
 import com.lightningkite.mirror.archive.model.*
 import com.lightningkite.mirror.archive.server.security.HasPassword

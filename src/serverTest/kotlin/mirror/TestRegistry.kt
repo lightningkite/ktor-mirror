@@ -6,19 +6,6 @@ import kotlin.reflect.KClass
 
 @SharedImmutable
 val TestRegistry = ClassInfoRegistry(
-    com.lightningkite.kommunicate.mirror.RemoteExceptionDataClassInfo,
-    com.lightningkite.mirror.archive.server.security.HasPasswordClassInfo,
-    com.lightningkite.mirror.server.ThrowExceptionRequestClassInfo,
-    com.lightningkite.mirror.server.UserClassInfo,
-    com.lightningkite.mirror.server.UserRoleClassInfo,
-    com.lightningkite.mirror.server.UserSessionClassInfo,
-    com.lightningkite.mirror.server.UserGetClassInfo,
-    com.lightningkite.mirror.server.UserPutClassInfo,
-    com.lightningkite.mirror.server.UserModifyClassInfo,
-    com.lightningkite.mirror.server.UserRemoveClassInfo,
-    com.lightningkite.mirror.server.UserQueryClassInfo,
-    com.lightningkite.mirror.server.UserResetPasswordClassInfo,
-    com.lightningkite.mirror.server.UserLoginClassInfo,
     com.lightningkite.mirror.request.RequestClassInfo,
     mirror.kotlin.ComparatorClassInfo,
     com.lightningkite.mirror.archive.database.SuspendMapEntryClassInfo,
@@ -49,5 +36,18 @@ val TestRegistry = ClassInfoRegistry(
     com.lightningkite.mirror.archive.model.OperationClassInfo,
     com.lightningkite.mirror.archive.model.ReferenceClassInfo,
     com.lightningkite.mirror.archive.model.SortClassInfo,
-    com.lightningkite.lokalize.TimeStampClassInfo
+    com.lightningkite.lokalize.time.TimeStampClassInfo,
+    com.lightningkite.kommunicate.mirror.RemoteExceptionDataClassInfo,
+    com.lightningkite.mirror.archive.server.security.HasPasswordClassInfo,
+    com.lightningkite.mirror.server.ThrowExceptionRequestClassInfo,
+    com.lightningkite.mirror.server.UserClassInfo,
+    com.lightningkite.mirror.server.UserRoleClassInfo,
+    com.lightningkite.mirror.server.UserSessionClassInfo,
+    com.lightningkite.mirror.server.UserGetClassInfo,
+    com.lightningkite.mirror.server.UserPutClassInfo,
+    com.lightningkite.mirror.server.UserModifyClassInfo,
+    com.lightningkite.mirror.server.UserRemoveClassInfo,
+    com.lightningkite.mirror.server.UserQueryClassInfo,
+    com.lightningkite.mirror.server.UserResetPasswordClassInfo,
+    com.lightningkite.mirror.server.UserLoginClassInfo
 )

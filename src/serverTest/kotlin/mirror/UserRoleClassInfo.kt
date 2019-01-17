@@ -3,7 +3,7 @@
 package com.lightningkite.mirror.server
 
 import com.lightningkite.kommon.exception.ExceptionNames
-import com.lightningkite.lokalize.TimeStamp
+import com.lightningkite.lokalize.time.TimeStamp
 import com.lightningkite.mirror.archive.server.security.HasPassword
 import com.lightningkite.mirror.info.Indexed
 import com.lightningkite.mirror.info.ThrowsTypes
@@ -16,24 +16,24 @@ import kotlin.reflect.KClass
 @Suppress("RemoveExplicitTypeArguments", "UNCHECKED_CAST", "USELESS_CAST")
 object UserRoleClassInfo: ClassInfo<User.Role> {
 
-   override val kClass: KClass<User.Role> = User.Role::class
-   override val modifiers: List<ClassInfo.Modifier> = listOf()
-   override val companion: Any? get() = null
+    override val kClass: KClass<User.Role> = User.Role::class
+    override val modifiers: List<ClassInfo.Modifier> = listOf()
+    override val companion: Any? get() = null
 
-   override val implements: List<Type<*>> = listOf()
+    override val implements: List<Type<*>> = listOf()
 
-   override val packageName: String = "com.lightningkite.mirror.server"
-   override val owner: KClass<*>? = User::class
-   override val ownerName: String? = "User"
+    override val packageName: String = "com.lightningkite.mirror.server"
+    override val owner: KClass<*>? = User::class
+    override val ownerName: String? = "User"
 
-   override val name: String = "Role"
-   override val annotations: List<AnnotationInfo> = listOf()
-   override val enumValues: List<User.Role>? = listOf(User.Role.Admin, User.Role.Citizen)
+    override val name: String = "Role"
+    override val annotations: List<AnnotationInfo> = listOf()
+    override val enumValues: List<User.Role>? = listOf(User.Role.Admin, User.Role.Citizen)
 
-   
+    
 
-   override val fields:List<FieldInfo<User.Role, *>> = listOf()
+    override val fields:List<FieldInfo<User.Role, *>> = listOf()
 
-   override fun construct(map: Map<String, Any?>): User.Role = throw NotImplementedError()
+    override fun construct(map: Map<String, Any?>): User.Role = throw NotImplementedError()
 
 }

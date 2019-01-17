@@ -8,24 +8,24 @@ import kotlin.reflect.KClass
 @Suppress("RemoveExplicitTypeArguments", "UNCHECKED_CAST", "USELESS_CAST")
 object SuspendMapServerFunctionClassInfo: ClassInfo<SuspendMapServerFunction<*,*>> {
 
-   override val kClass: KClass<SuspendMapServerFunction<*,*>> = SuspendMapServerFunction::class
-   override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Interface, ClassInfo.Modifier.Abstract)
-   override val companion: Any? get() = null
+    override val kClass: KClass<SuspendMapServerFunction<*,*>> = SuspendMapServerFunction::class
+    override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Interface, ClassInfo.Modifier.Abstract)
+    override val companion: Any? get() = null
 
-   override val implements: List<Type<*>> = listOf(Type<kotlin.Any>(kotlin.Any::class, listOf(), false))
+    override val implements: List<Type<*>> = listOf(Type<kotlin.Any>(kotlin.Any::class, listOf(), false))
 
-   override val packageName: String = "com.lightningkite.mirror.archive.database"
-   override val owner: KClass<*>? = null
-   override val ownerName: String? = null
+    override val packageName: String = "com.lightningkite.mirror.archive.database"
+    override val owner: KClass<*>? = null
+    override val ownerName: String? = null
 
-   override val name: String = "SuspendMapServerFunction"
-   override val annotations: List<AnnotationInfo> = listOf()
-   override val enumValues: List<SuspendMapServerFunction<*,*>>? = null
+    override val name: String = "SuspendMapServerFunction"
+    override val annotations: List<AnnotationInfo> = listOf()
+    override val enumValues: List<SuspendMapServerFunction<*,*>>? = null
 
-   
+    
 
-   override val fields:List<FieldInfo<SuspendMapServerFunction<*,*>, *>> = listOf()
+    override val fields:List<FieldInfo<SuspendMapServerFunction<*,*>, *>> = listOf()
 
-   override fun construct(map: Map<String, Any?>): SuspendMapServerFunction<Any?, kotlin.Any> = throw NotImplementedError()
+    override fun construct(map: Map<String, Any?>): SuspendMapServerFunction<Any?, kotlin.Any> = throw NotImplementedError()
 
 }

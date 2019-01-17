@@ -8,33 +8,33 @@ import kotlin.reflect.KClass
 @Suppress("RemoveExplicitTypeArguments", "UNCHECKED_CAST", "USELESS_CAST")
 object ConditionNeverClassInfo: ClassInfo<Condition.Never<*>> {
 
-   override val kClass: KClass<Condition.Never<*>> = Condition.Never::class
-   override val modifiers: List<ClassInfo.Modifier> = listOf()
-   override val companion: Any? get() = null
+    override val kClass: KClass<Condition.Never<*>> = Condition.Never::class
+    override val modifiers: List<ClassInfo.Modifier> = listOf()
+    override val companion: Any? get() = null
 
-   override val implements: List<Type<*>> = listOf(Type<com.lightningkite.mirror.archive.model.Condition<Any?>>(com.lightningkite.mirror.archive.model.Condition::class, listOf(TypeProjection(Type<Any?>(Any::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
+    override val implements: List<Type<*>> = listOf(Type<com.lightningkite.mirror.archive.model.Condition<Any?>>(com.lightningkite.mirror.archive.model.Condition::class, listOf(TypeProjection(Type<Any?>(Any::class, listOf(), false), TypeProjection.Variance.INVARIANT)), false))
 
-   override val packageName: String = "com.lightningkite.mirror.archive.model"
-   override val owner: KClass<*>? = Condition::class
-   override val ownerName: String? = "Condition"
+    override val packageName: String = "com.lightningkite.mirror.archive.model"
+    override val owner: KClass<*>? = Condition::class
+    override val ownerName: String? = "Condition"
 
-   override val name: String = "Never"
-   override val annotations: List<AnnotationInfo> = listOf()
-   override val enumValues: List<Condition.Never<*>>? = null
+    override val name: String = "Never"
+    override val annotations: List<AnnotationInfo> = listOf()
+    override val enumValues: List<Condition.Never<*>>? = null
 
-   
+    
 
-   override val fields:List<FieldInfo<Condition.Never<*>, *>> = listOf()
+    override val fields:List<FieldInfo<Condition.Never<*>, *>> = listOf()
 
-   override fun construct(map: Map<String, Any?>): Condition.Never<Any?> {
-       //Gather variables
-       
-           //Handle the optionals
-       
-       //Finally do the call
-       return Condition.Never<Any?>(
-           
-       )
-   }
+    override fun construct(map: Map<String, Any?>): Condition.Never<Any?> {
+        //Gather variables
+        
+        //Handle the optionals
+        
+        //Finally do the call
+        return Condition.Never<Any?>(
+            
+        )
+    }
 
 }

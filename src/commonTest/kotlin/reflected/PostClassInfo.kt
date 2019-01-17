@@ -8,42 +8,42 @@ import kotlin.reflect.KClass
 @Suppress("RemoveExplicitTypeArguments", "UNCHECKED_CAST", "USELESS_CAST")
 object PostClassInfo: ClassInfo<Post> {
 
-   override val kClass: KClass<Post> = Post::class
-   override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Data)
-   override val companion: Any? get() = null
+    override val kClass: KClass<Post> = Post::class
+    override val modifiers: List<ClassInfo.Modifier> = listOf(ClassInfo.Modifier.Data)
+    override val companion: Any? get() = null
 
-   override val implements: List<Type<*>> = listOf()
+    override val implements: List<Type<*>> = listOf()
 
-   override val packageName: String = "com.lightningkite.kommunicate"
-   override val owner: KClass<*>? = null
-   override val ownerName: String? = null
+    override val packageName: String = "com.lightningkite.kommunicate"
+    override val owner: KClass<*>? = null
+    override val ownerName: String? = null
 
-   override val name: String = "Post"
-   override val annotations: List<AnnotationInfo> = listOf()
-   override val enumValues: List<Post>? = null
+    override val name: String = "Post"
+    override val annotations: List<AnnotationInfo> = listOf()
+    override val enumValues: List<Post>? = null
 
-   val fieldId = FieldInfo<Post, Long?>(this, "id", Type<Long?>(Long::class, listOf(), true), false, { it.id as Long?}, listOf())
+    val fieldId = FieldInfo<Post, Long?>(this, "id", Type<Long?>(Long::class, listOf(), true), false, { it.id as Long?}, listOf())
     val fieldUserId = FieldInfo<Post, Long>(this, "userId", Type<Long>(Long::class, listOf(), false), false, { it.userId as Long}, listOf())
     val fieldTitle = FieldInfo<Post, String>(this, "title", Type<String>(String::class, listOf(), false), false, { it.title as String}, listOf())
     val fieldBody = FieldInfo<Post, String>(this, "body", Type<String>(String::class, listOf(), false), false, { it.body as String}, listOf())
 
-   override val fields:List<FieldInfo<Post, *>> = listOf(fieldId, fieldUserId, fieldTitle, fieldBody)
+    override val fields:List<FieldInfo<Post, *>> = listOf(fieldId, fieldUserId, fieldTitle, fieldBody)
 
-   override fun construct(map: Map<String, Any?>): Post {
-       //Gather variables
-       val id:Long? = map["id"] as Long?
+    override fun construct(map: Map<String, Any?>): Post {
+        //Gather variables
+        val id:Long? = map["id"] as Long?
         val userId:Long = map["userId"] as Long
         val title:String = map["title"] as String
         val body:String = map["body"] as String
-           //Handle the optionals
-       
-       //Finally do the call
-       return Post(
-           id = id,
+        //Handle the optionals
+        
+        //Finally do the call
+        return Post(
+            id = id,
             userId = userId,
             title = title,
             body = body
-       )
-   }
+        )
+    }
 
 }
