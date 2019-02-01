@@ -18,14 +18,15 @@ apply plugin: 'kotlin-multiplatform'
 apply plugin: 'com.lightningkite.mirror'
 apply plugin: 'maven-publish'
 
+group 'com.lightningkite'
+version versionsProperties.getProperty(repositoryName)
+
 repositories {
     jcenter()
     mavenCentral()
     mavenLocal()
     maven { url "https://kotlin.bintray.com/kotlinx" }
 }
-group 'com.lightningkite'
-version '0.0.2'
 
 
 kotlin {
@@ -39,13 +40,11 @@ kotlin {
         }
     }
 
-    def ktorVersion = '1.0.0'
-
     sourceSets {
         commonMain {
             dependencies {
                 api 'org.jetbrains.kotlin:kotlin-stdlib-common'
-                api 'com.lightningkite:kommunicate-metadata:0.0.2'
+                api "io.ktor:ktor-client-core:${versionsProperties.ktor}"
                 api "com.lightningkite:mirror-runtime-metadata:${versionsProperties.mirror}"
             }
         }
@@ -53,21 +52,19 @@ kotlin {
             dependencies {
                 api 'org.jetbrains.kotlin:kotlin-test-common'
                 api 'org.jetbrains.kotlin:kotlin-test-annotations-common'
-                api 'org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.0.1'
-                api 'org.jetbrains.kotlinx:kotlinx-coroutines-io:0.1.1'
+                api "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:${versionsProperties.kotlinx_coroutines}"
             }
         }
         jvmMain {
             dependencies {
                 api 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-                api 'com.squareup.okhttp3:okhttp:3.11.0'
-                api 'com.lightningkite:kommunicate-jvm:0.0.2'
+                api "io.ktor:ktor-client-core-jvm:${versionsProperties.ktor}"
                 api "com.lightningkite:mirror-runtime-jvm:${versionsProperties.mirror}"
             }
         }
         jvmTest {
             dependencies {
-                api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
+                api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versionsProperties.kotlinx_coroutines}"
                 api 'org.jetbrains.kotlin:kotlin-test'
                 api 'org.jetbrains.kotlin:kotlin-test-junit'
             }
@@ -75,42 +72,39 @@ kotlin {
         serverMain {
             dependencies {
                 api 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-                api 'com.squareup.okhttp3:okhttp:3.11.0'
-                api 'com.lightningkite:kommunicate-jvm:0.0.2'
+                api "io.ktor:ktor-client-core-jvm:${versionsProperties.ktor}"
+                api "io.ktor:ktor-server-core-jvm:${versionsProperties.ktor}"
+                api "io.ktor:ktor-auth:${versionsProperties.ktor}"
+                api "io.ktor:ktor-websockets:${versionsProperties.ktor}"
                 api "com.lightningkite:mirror-runtime-jvm:${versionsProperties.mirror}"
 
-                api "io.ktor:ktor-server-core:${ktorVersion}"
-                api "io.ktor:ktor-auth:${ktorVersion}"
-                api "io.ktor:ktor-websockets:${ktorVersion}"
                 api "me.gosimple:nbvcxz:1.4.2"
-
-                api 'com.lightningkite:mirror-archive-api-jvm:0.0.2'
 
                 api 'de.mkammerer:argon2-jvm:2.5'
             }
         }
         serverTest {
             dependencies {
-                api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1'
+                api "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versionsProperties.kotlinx_coroutines}"
                 api 'org.jetbrains.kotlin:kotlin-test'
                 api 'org.jetbrains.kotlin:kotlin-test-junit'
 
-                api "io.ktor:ktor-server-test-host:${ktorVersion}"
-                api "io.ktor:ktor-server-netty:${ktorVersion}"
-                api "io.ktor:ktor-server-cio:${ktorVersion}"
-                api "io.ktor:ktor-auth-jwt:${ktorVersion}"
+                api "io.ktor:ktor-server-test-host:${versionsProperties.ktor}"
+                api "io.ktor:ktor-server-netty:${versionsProperties.ktor}"
+                api "io.ktor:ktor-server-cio:${versionsProperties.ktor}"
+                api "io.ktor:ktor-auth-jwt:${versionsProperties.ktor}"
             }
         }
         jsMain {
             dependencies {
                 api 'org.jetbrains.kotlin:kotlin-stdlib-js'
-                api 'com.lightningkite:kommunicate-js:0.0.2'
+                api "io.ktor:ktor-client-core-js:${versionsProperties.ktor}"
                 api "com.lightningkite:mirror-runtime-js:${versionsProperties.mirror}"
             }
         }
         jsTest {
             dependencies {
-                api 'org.jetbrains.kotlinx:kotlinx-coroutines-core-js:1.0.1'
+                api "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:${versionsProperties.kotlinx_coroutines}"
                 api 'org.jetbrains.kotlin:kotlin-test-js'
             }
         }
@@ -118,26 +112,26 @@ kotlin {
         if (org.gradle.internal.os.OperatingSystem.current().isMacOsX()) {
             iosMain {
                 dependencies {
-                    api 'com.lightningkite:kommunicate-ios:0.0.2'
+                    api "io.ktor:ktor-client-core-ios:${versionsProperties.ktor}"
                     api "com.lightningkite:mirror-runtime-ios:${versionsProperties.mirror}"
                 }
             }
             iosTest {
                 dependencies {
-                    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core-native_debug_ios_arm64:1.0.1'
+                    api "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${versionsProperties.kotlinx_coroutines}"
                 }
             }
             iosx64Main {
                 kotlin.srcDir('src/iosMain/kotlin')
                 dependencies {
-                    api 'com.lightningkite:kommunicate-iosx64:0.0.2'
+                    api "io.ktor:ktor-client-core-ios:${versionsProperties.ktor}"
                     api "com.lightningkite:mirror-runtime-iosx64:${versionsProperties.mirror}"
                 }
             }
             iosx64Test {
                 kotlin.srcDir('src/iosTest/kotlin')
                 dependencies {
-                    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core-native_debug_ios_x64:1.0.1'
+                    api "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${versionsProperties.kotlinx_coroutines}"
                 }
             }
         }
@@ -167,3 +161,5 @@ if(org.gradle.internal.os.OperatingSystem.current().isMacOsX()) {
     }
     tasks.check.dependsOn(tasks.iosTest)
 }
+
+apply from: rootProject.file("gradle/publish.gradle")
